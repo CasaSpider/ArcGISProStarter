@@ -17,7 +17,7 @@ namespace ArcGISProStarter
         public static string Author = "Peter Nijhuis";
         public static string ProgramDate = "September 2019";
             
-        public static List<string> PhaseList = new List<string>() { "T", "A", "P" };
+        public static List<string> PhaseList = new List<string>() { "Test", "Acceptatie", "Productie" };
         public static string Phase = string.Empty;
         public static string HostfilePhase = string.Empty;
 
@@ -72,7 +72,7 @@ namespace ArcGISProStarter
         {
             for (int i = 0; i < PhaseList.Count; i++)
             {
-                if (PhaseList[i] == HostfilePhase)
+                if (PhaseList[i][0].ToString() == HostfilePhase)
                     return i;
             }
             throw new Exception($"GetHostfileIndex: No such phase in Hosts file [{HostfilePhase}]");
@@ -135,7 +135,7 @@ namespace ArcGISProStarter
 
         private void cbx_dropdownclosed(object sender, EventArgs e)
         {
-            Phase = cbx_phase.Text;
+            Phase = cbx_phase.Text[0].ToString();
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
